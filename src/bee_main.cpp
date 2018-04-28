@@ -20,7 +20,10 @@ int main(int argc, char* argv[]) {
         int drones = std::atoi(argv[3]);
         int nector_workers = std::atoi(argv[4]);
         int pollen_workers = std::atoi(argv[5]);
-        std::cout<<seed<<seconds<<drones<<nector_workers<<pollen_workers;
+        std::cout<<"Seed: "<<seed <<"\nSimulation time: "<<seconds;
+        std::cout<<"\nStarting drones: "<<drones<<"\nStarting nectar workers: "<<nector_workers;
+        std::cout<<"\nStarting pollen workers: "<<pollen_workers<<"\n";
+        //std::cout<<seed<<seconds<<drones<<nector_workers<<pollen_workers;
         world::BeeHive hive_(seed, drones, nector_workers, pollen_workers);
         hive_.start();
         sleep_for(milliseconds(seconds*1000));

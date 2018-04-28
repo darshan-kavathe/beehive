@@ -17,7 +17,7 @@ namespace bees {
     class Bee:public my_thread{
     public:
         //Constructor of bees
-        Bee(const unsigned int id_, const std::string& role_, BeeHive* hive_);
+        Bee(const unsigned int id_, const std::string& role_, BeeHive& hive_);
         //Destructor of bees
         ~Bee();
         //delete copy constructor
@@ -31,15 +31,14 @@ namespace bees {
         // run the bee
         // beehive pointer
         // print method
-        BeeHive* hive_;
+        BeeHive& hive_;
         friend std::ostream& operator<<(std::ostream& out, const Bee& other);
     private:
         //role of bee
-        const std::string& role_;
+        const std::string role_;
         //ID of bee
         const unsigned int id_;
         //pointer to its own BeeHive
-
     };
 }
 #endif

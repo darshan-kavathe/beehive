@@ -2,7 +2,7 @@
 
 using bees::Bee;
 
-Bee::Bee(const unsigned int id, const std::string& role, BeeHive* hive):
+Bee::Bee(const unsigned int id, const std::string& role, BeeHive& hive):
 id_(id),role_(role),hive_(hive){
 }
 

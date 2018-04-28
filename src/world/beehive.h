@@ -18,6 +18,7 @@ using bees::Bee;
 using std::vector;
 using std::shared_ptr;
 using std::cout;
+using bees::Resource;
 namespace world{
     class BeeHive{
     public:
@@ -33,6 +34,7 @@ namespace world{
         vector <shared_ptr<my_thread> > bee_vec {};
         bool active_;
         Flower_field field_;
+        Resource bag;
 
     private:
         int seed_;
