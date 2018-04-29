@@ -11,10 +11,9 @@ Queens_chamber::Queens_chamber():drone_cond{},drone_mutex{}{
 }
 
 void Queens_chamber::enter(Drone* drone){
-    (drone->hive_).lg_.log("*QC* DRONE #"
+    drone->hive_.lg_.log("*QC* DRONE #"
                            +std::to_string(drone->getId())
-                           +" enters chamber"
-    );
+                           +" enters chamber");
     unique_lock<mutex> ul{drone_mutex};
     drone_vec.push_back(drone);
 
