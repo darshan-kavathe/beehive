@@ -9,7 +9,8 @@
 namespace bees {
     class Queen: public Bee{
     public:
-        Queen();
+        Queen(const unsigned int id, const std::string& role, BeeHive& hive);
+
         void run();
     };
 }

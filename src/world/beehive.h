@@ -7,7 +7,7 @@
 #include "../util/logger.h"
 #include <deque>
 #include "memory"
-
+#include <mutex>
 using std::deque;
 using std::string;
 using world::Flower_field;
@@ -19,6 +19,7 @@ using std::vector;
 using std::shared_ptr;
 using std::cout;
 using bees::Resource;
+using std::mutex;
 namespace world{
     class BeeHive{
     public:
@@ -35,18 +36,20 @@ namespace world{
         bool active_;
         Flower_field field_;
         Resource bag;
+        //vector <shared_ptr<my_thread> > dead_pool {};
+        void dead(Bee* b);
+        std::mutex lock;
+        int temp_id;
+        //Queens_chamber chamber_;
+        util::random rng_;
+        void give_birth();
 
     private:
         int seed_;
         int drones_;
         int nector_workers_;
         int pollen_workers_;
-        //deque<bees::Bee*> beeq_;
-        //Queens_chamber* chamber_;
-        //std::ostream& os;
-        util::random rng_;
 
-        //std::ostream &os;
 
     };
 }

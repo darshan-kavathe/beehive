@@ -17,6 +17,11 @@ Worker::Worker(const std::string &type, const unsigned int amt, const unsigned i
 
 void Worker::run() {
     while(hive_.active_){
+        hive_.lg_.log("*B* "+ this->get_type()
+                      +"("+std::to_string(this->get_amt())+")"
+                      +" WORKER #"
+                      +std::to_string(this->getId())
+                      +" runs");
         ((hive_).field_).enter(this);
         /*
         (hive_).lg_.log("*FF* "+ get_type()
@@ -54,6 +59,7 @@ void Worker::run() {
                             +" WORKER #"
                             +std::to_string(getId())
                             +" is refueling");
+
         }
         else{
             (hive_).lg_.log("*BH* "+ get_type()
@@ -61,6 +67,7 @@ void Worker::run() {
                             +" WORKER #"
                             +std::to_string(getId())
                             +" Perished!");
+
             break;
         }
 

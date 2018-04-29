@@ -15,6 +15,7 @@ namespace bees {
         const std::string get_type();
         const unsigned int get_amt();
         friend std::ostream& operator<<(std::ostream& os, const Worker& other);
+        bool is_dead;
 
     private:
         const std::string type_;

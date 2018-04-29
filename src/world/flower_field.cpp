@@ -17,9 +17,10 @@ int current_running =0;
 }
 
 void Flower_field::enter(Worker* worker) {
-    unique_lock<mutex> ul{worker_mutex};
-    worker_cond.wait(ul,[this](){return current_running<MAX_RUNNING;});
-    ++current_running;
+
+        unique_lock<mutex> ul{worker_mutex};
+        worker_cond.wait(ul, [this]{ return current_running < MAX_RUNNING; });
+        ++current_running;
 
     (worker->hive_).lg_.log("*FF* "+ worker->get_type()
                            +"("+std::to_string(worker->get_amt())+")"
@@ -30,7 +31,8 @@ void Flower_field::enter(Worker* worker) {
 void Flower_field::exit(Worker *worker) {
     {
     lock_guard<mutex> lguard{worker_mutex};
-    --current_running;}
+    --current_running;
+    }
     worker_cond.notify_one();
     (worker->hive_).lg_.log("*FF* "+ worker->get_type()
                            +"("+std::to_string(worker->get_amt())+")"

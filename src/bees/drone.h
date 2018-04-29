@@ -7,10 +7,11 @@
 #include "bee.h"
 
 namespace bees {
-    class Drone: bees::Bee{
+    class Drone: public Bee{
     public:
-        Drone();
+        Drone(const unsigned int id, const std::string& role, BeeHive& hive);
         void run();
+        bool is_dead;
     };
 }
 #endif

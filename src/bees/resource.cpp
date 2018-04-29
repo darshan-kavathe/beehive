@@ -1,5 +1,5 @@
 #include "resource.h"
-
+using std::unique_lock;
 bees::Resource::Resource(int nector, int pollen):nector_(nector),pollen_(pollen){
 }
 void bees::Resource::deposit_nector(int amt) {
